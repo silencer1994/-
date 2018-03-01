@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="2"
+        android:orientation="vertical">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <View
+                android:layout_centerVertical="true"
+                android:id="@+id/view_split"
+                android:layout_width="match_parent"
+                android:layout_height="1dp">
+
+            </View>
+            <TextView
+                android:id="@+id/tv_time"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:textColor="#0077ff"
+                android:text="分钟"
+                android:layout_above="@+id/view_split"
+                android:textSize="25sp" />
+
+            <TextView
+                android:layout_below="@+id/view_split"
+                android:id="@+id/tv_length"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="公里"
+                android:textColor="#0077ff"
+                android:textSize="25sp" />
+        </RelativeLayout>
+
+
+    </LinearLayout>
+
+    <com.leador.api.maps.MapView
+        android:id="@+id/mapview"
+        android:layout_width="0dp"
+        android:layout_weight="5"
+        android:layout_height="match_parent" />
+
+</LinearLayout>

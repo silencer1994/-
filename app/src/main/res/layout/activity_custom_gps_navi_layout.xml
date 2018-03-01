@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/mainLayout"
+    android:background="#ffffffff"
+    >
+    <RelativeLayout
+        android:id="@+id/rl_normal"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="visible">
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="33dp"
+            android:onClick="chooseStart"
+            android:id="@+id/start"
+            android:text="起点"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentStart="true"
+            android:layout_above="@+id/btn_transit" />
+
+        <Button
+            android:text="途经点"
+            android:layout_above="@+id/end"
+            android:id="@+id/btn_transit"
+            android:layout_width="wrap_content"
+            android:layout_height="33dp"
+            android:onClick="chooseTransit"/>
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="33dp"
+            android:onClick="chooseEnd"
+            android:id="@+id/end"
+            android:layout_above="@+id/mapview"
+            android:text="终点"/>
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="100dp"
+            android:onClick="calculateRoute"
+            android:id="@+id/button_calculateRoute"
+            android:layout_toRightOf="@+id/start"
+            android:text="货车算路"/>
+
+
+
+        <com.leador.api.maps.MapView
+            android:id="@+id/mapview"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/button_calculateRoute"/>
+
+
+        <Button
+            android:layout_toRightOf="@+id/button_calculateRoute"
+            android:text="设置货车信息"
+            android:onClick="setTruckInfo"
+            android:maxLines="1"
+            android:id="@+id/btn_set_truck_info"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"/>
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:onClick="goToActivity"
+            android:id="@+id/start_sim_navi"
+            android:text="模拟导航"
+            android:layout_below="@+id/btn_set_truck_info"
+            android:layout_toRightOf="@+id/button_calculateRoute"/>
+        <Button
+            android:layout_alignTop="@+id/start_sim_navi"
+            android:layout_toRightOf="@+id/start_sim_navi"
+            android:text="限高限重"
+            android:id="@+id/avoidHW"
+            android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+        <!--android:onClick="avoidHWeight"-->
+
+
+
+    </RelativeLayout>
+
+
+    <LinearLayout
+        android:id="@+id/ll_truck_info"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:visibility="gone"
+    >
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:text="货车or小车算路"
+                android:layout_gravity="center_vertical"
+                android:textColor="@color/black"/>
+            <ToggleButton
+                android:id="@+id/tglCarType" android:background="@drawable/selector_butn_toggle"
+                android:layout_width="wrap_content" android:layout_height="wrap_content"
+                android:checked="true" android:textOn="" android:textOff=""
+                android:text="" />
+        </LinearLayout>
+        <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="车牌号码 :"
+            android:layout_gravity="center_vertical"
+            android:textColor="@color/black"/>
+        <EditText
+            android:id="@+id/ed_car_word"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="0"
+            android:hint="7位车牌号码"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="最大高度 :"
+                android:layout_gravity="center_vertical"
+                android:textColor="@color/black"/>
+            <EditText
+                android:id="@+id/ed_car_height"
+                android:inputType="number"
+                android:text="0"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="0~10米"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="货车总重 :"
+                android:layout_gravity="center_vertical"
+                android:textColor="@color/black"/>
+            <EditText
+                android:id="@+id/ed_car_weight"
+                android:inputType="number"
+                android:text="0"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="0~100吨"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:text="限重参与路径规划 "
+                android:layout_gravity="center_vertical"
+                android:textColor="@color/black"/>
+            <ToggleButton
+                android:id="@+id/tglWeight" android:background="@drawable/selector_butn_toggle"
+                android:layout_width="wrap_content" android:layout_height="wrap_content"
+                android:checked="true" android:textOn="" android:textOff=""
+                android:text="" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:text="出行时间15:00"
+                android:layout_gravity="center_vertical"
+                android:textColor="@color/black"/>
+            <ToggleButton
+                android:id="@+id/tglTime" android:background="@drawable/selector_butn_toggle"
+                android:layout_width="wrap_content" android:layout_height="wrap_content"
+                android:checked="true" android:textOn="" android:textOff=""
+                android:text="" />
+        </LinearLayout>
+        <Button
+            android:text="保存"
+            android:id="@+id/btn_set_over"
+            android:layout_gravity="center"
+            android:onClick="setTruckInfoOver"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+    </LinearLayout>
+
+</RelativeLayout>

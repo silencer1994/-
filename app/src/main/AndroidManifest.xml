@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+          package="com.navifunctiontest">
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme"
+        android:name=".APP">
+        <meta-data
+        android:name="com.leador.auth.url"
+            android:value="http://172.192.100.17:15001/ZY/v3/mobile/auth" />
+        <!--android:value="http://172.192.100.17:9080/qa/key/key.do" />-->
+        <meta-data android:name="com.leador.apikey"
+            android:value="ec85d3648154874552835438ac6a02b2" />
+        <!--android:value="49755643c7056b6ea3b90b1242520b74" />-->
+        <!--android:value="06181226c7a6432e38632482d1eea33b" />-->
+        <meta-data
+            android:name="com.leador.api.url"
+            android:value="http://172.192.100.8:35001/v3" />
+        <activity android:name=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity>
+        <activity android:name=".activitys.TruckActivity"
+                  android:configChanges="keyboardHidden|orientation|screenSize"
+            />
+        <activity android:name=".copycode.SimpleNaviActivity"
+                  android:configChanges="orientation|keyboardHidden|screenSize"
+            >
+        </activity>
+        <activity android:name=".activitys.CompareActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:screenOrientation="landscape">
+
+        </activity>
+        <activity android:name=".activitys.ShowLeadorActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:screenOrientation="landscape">
+
+        </activity>
+        <activity android:name=".activitys.ShowLaneActivity"
+        android:configChanges="orientation|keyboardHidden|screenSize"
+        android:screenOrientation="landscape">
+
+        </activity>
+
+        <receiver android:name=".network.NetworkConnectChangedReceiver">
+            <intent-filter>
+                <action android:name="android.NET.wifi.RSSI_CHANGED"/>
+                <action android:name="android.Net.wifi.STATE_CHANGE"/>
+                <action android:name="android.net.wifi.WIFI_STATE_CHANGED"/>
+            </intent-filter>
+        </receiver>
+        <!--<activity android:name="com.autonavi.auto.MainMapActivity"-->
+    </application>
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.CHANGE_CONFIGURATION" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.WRITE_SETTINGS" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+
+    <!-- SDCard中创建与删除文件权限 -->
+    <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS"/>
+
+
+</manifest>
